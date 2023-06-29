@@ -1,0 +1,133 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RazorLangVersion>3.0</RazorLangVersion>
+    <Version>3.3.0</Version>
+    <Authors>tjvvuuren</Authors>
+    <Company>Dunamix</Company>
+    <Description>Theme Boostrap Material-Kit MDB for Oqtane</Description>
+    <Product>Dunamix.Material2SicElf</Product>
+    <Copyright>Dunamix</Copyright>
+    <AssemblyName>Dunamix.Material2SicElf.Client.Oqtane</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controls\Nav\**" />
+    <Compile Remove="src\scss\**" />
+    <Compile Remove="src\styles.old\**" />
+    <Compile Remove="wwwroot\Themes\Dunamix.Material2SicElf\mdb\**" />
+    <Compile Remove="wwwroot\Themes\Dunamix.Material2SicElf\NewFolder\**" />
+    <Content Remove="Controls\Nav\**" />
+    <Content Remove="src\scss\**" />
+    <Content Remove="src\styles.old\**" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\mdb\**" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\NewFolder\**" />
+    <EmbeddedResource Remove="Controls\Nav\**" />
+    <EmbeddedResource Remove="src\scss\**" />
+    <EmbeddedResource Remove="src\styles.old\**" />
+    <EmbeddedResource Remove="wwwroot\Themes\Dunamix.Material2SicElf\mdb\**" />
+    <EmbeddedResource Remove="wwwroot\Themes\Dunamix.Material2SicElf\NewFolder\**" />
+    <None Remove="Controls\Nav\**" />
+    <None Remove="src\scss\**" />
+    <None Remove="src\styles.old\**" />
+    <None Remove="wwwroot\Themes\Dunamix.Material2SicElf\mdb\**" />
+    <None Remove="wwwroot\Themes\Dunamix.Material2SicElf\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="Containers\FrostedContainer.razor" />
+    <Content Remove="Containers\HeroContainer.razor" />
+    <Content Remove="Themes\DunamiX-Corp.razor" />
+    <Content Remove="Themes\DunamiX-Dashboard.razor" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\img\dark-bck.png" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\img\dunamix-bck.jpg" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\img\horizon-bg.jpg" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\img\info-banner.jpg" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\img\logos\logo-sm.png" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\img\logos\logo.png" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\img\logos\star-logo-sm.png" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\img\logos\star-logo.png" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\img\nebula-bck.jpg" />
+    <Content Remove="wwwroot\Themes\Dunamix.Material2SicElf\img\skies-bg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="src\assets\img\logo_red.png" />
+    <None Remove="src\styles\Theme.css" />
+    <None Remove="src\styles\Theme.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="src\assets\img\logo_red.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="src\styles\Theme.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="src\styles\Theme.min.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\img\dark-bck.png" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\img\dunamix-bck.jpg" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\img\horizon-bg.jpg" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\img\info-banner.jpg" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\img\logos\logo-sm.png" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\img\logos\logo.png" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\img\logos\star-logo-sm.png" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\img\logos\star-logo.png" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\img\nebula-bck.jpg" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\img\skies-bg.jpg" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\core\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\core\bootstrap.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\core\popper.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\choices.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\countup.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\flatpickr.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\highlight.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\moment.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\parallax.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\perfect-scrollbar.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\prism.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\rellax.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\tilt.min.js" />
+    <None Include="wwwroot\Themes\Dunamix.Material2SicElf\js\plugins\typedjs.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.3" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.3" />
+    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Oqtane.Framework\Oqtane.Client\Oqtane.Client.csproj" />
+    <ProjectReference Include="..\..\oqtane.framework\Oqtane.Server\Oqtane.Server.csproj" />
+    <ProjectReference Include="..\..\Oqtane.Framework\Oqtane.Shared\Oqtane.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="src\styles\plugins\daterangepicker\bower.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- there may be other elements here -->
+    <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>

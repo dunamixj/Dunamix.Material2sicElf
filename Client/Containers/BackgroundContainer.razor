@@ -1,0 +1,49 @@
+@namespace Dunamix.Material2SicElf
+@inherits ContainerBase
+@inject ISettingService SettingService
+
+
+<div class="dunamix-background text-white shadow-5-strong banner parallax scroll glass py-5 @(_classes)"
+     style="background-image:url('/Themes/Dunamix.Material2SicElf/img/@(_themePrefix)bck.jpg'); background-position: center center; background-size: Cover;background-attachment: fixed;background-repeat: no-repeat;min-height:50vh">
+        @if (_title && ModuleState.Title != "-")
+        {
+            <div class="row px-4 mx-auto">
+            <span style="color:red"><ModuleActions /></span>
+                <div class="d-flex flex-nowrap justify-content-center">
+                    <h2><ModuleTitle /></h2>
+                </div>
+                <hr class="app-rule" />
+            </div>
+        }
+        else
+        {
+            <span style="color:red"><ModuleActions /></span>
+        }
+
+        <div class="row">
+            <ModuleInstance />
+        </div>
+    </div>
+
+@code {
+    public override string Name => "Customizable Background Container";
+    private string _themePrefix = "dunamix-";
+    private bool _title = true;
+    private string _classes = "container-fluid";
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            _title = bool.Parse(SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Title", "true"));
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Background", "");
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Text", "");
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Border", "");
+            _classes = _classes.Trim();
+        }
+        catch(Exception ex)
+        {
+            throw ex;
+            // error loading container settings
+        }
+    }
+}

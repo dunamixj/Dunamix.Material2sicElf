@@ -1,0 +1,51 @@
+﻿@namespace Dunamix.Material2SicElf.Controls
+@using Oqtane.Themes
+@inherits ThemeControlBase
+@inject ISettingService SettingService    
+
+<div id="@(_themePrefix)landing" class="@(_themePrefix)landing glass" style="background-image:url('@(BackgroundImage)');height:100vh">
+    
+    <div style="height:25vh">&nbsp;</div>
+    
+    <div class="container-fluid">
+        <div class="row px-3 frosted">
+            <Pane Name="Top Full Width" />
+        </div>
+        <div class="row py-2">
+            <div class="mouse_scroll">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div>
+                    <span class="m_scroll_arrows unu"></span>
+                    <span class="m_scroll_arrows doi"></span>
+                    <span class="m_scroll_arrows trei"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool _isHome = true;
+    private string _themePrefix = "dunamix-";
+
+    [Parameter]
+    public string BackgroundImage { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            if(PageState.Page.Name != "Home")
+            {
+                _isHome = false;
+            }
+        }
+        catch (Exception)
+        {
+            
+            throw;
+        }
+    }
+}

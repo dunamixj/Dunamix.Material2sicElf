@@ -1,0 +1,71 @@
+﻿@namespace Dunamix.Material2SicElf.Controls
+@using Microsoft.AspNetCore.Components.Authorization
+@inherits ThemeControlBase
+@inject ISettingService SettingService
+
+<div class="fixed-top top-0 m-4 ">
+    <nav class="navbar navbar-expand-lg glass navbar-dark text-white" id="@(NavBarPrefix)">
+    <div class="container-fluid">
+        
+        <a class="navbar-brand w-25 py-1" href="/" rel="tooltip" title="Designed and Coded by Dunamix" data-placement="bottom" target="_blank">
+            <Logo />
+        </a>
+
+        <div class="navbar-nav w-50" style="justify-content: center;">
+            <Menu Orientation="Horizontal" />
+        </div>
+
+        <!-- Right navigation -->
+        <div class="navbar-nav w-25">
+            <div class="btn-group ms-auto">
+                    <AuthorizeView Roles="@RoleNames.Registered">
+                    <Authorizing>
+                        <text>...</text>
+                    </Authorizing>
+                    <Authorized>
+                        <span class="p-2">
+                            <Dunamix.Material2SicElf.Controls.Login ShowLogin="@_login" />
+                        </span>
+                        <span class="p-2">
+                            <Dunamix.Material2SicElf.Controls.UserProfile ShowRegister="@_register" />
+                        </span>
+                        <ControlPanelButtons />
+                    </Authorized>
+                    <NotAuthorized>
+                        <span class="p-2">
+                            <Dunamix.Material2SicElf.Controls.Login ShowLogin="@_login" />
+                        </span>
+                        <span class="p-2">
+                            <Dunamix.Material2SicElf.Controls.UserProfile ShowRegister="@_register" />
+                        </span>
+                    </NotAuthorized>
+                </AuthorizeView>
+               
+            </div>
+        </div>
+    </div>
+</nav>
+</div>
+<div style="height:35vh">&nbsp;</div>
+<AdminControlPanel />
+
+@code
+{
+    const string NavBarPrefix = "dunamix-navbar";
+    private bool _login = true;
+    private bool _register = true;
+    
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            var settings = SettingService.MergeSettings(PageState.Site.Settings, PageState.Page.Settings);
+            _login = bool.Parse(SettingService.GetSetting(settings, GetType().Namespace + ":Login", "true"));
+            _register = bool.Parse(SettingService.GetSetting(settings, GetType().Namespace + ":Register", "true"));
+        }
+        catch
+        {
+            // error loading theme settings
+        }
+    }
+}

@@ -1,0 +1,13 @@
+//
+// Color styles
+//
+
+@each $color, $value in $theme-colors {
+  .bg-glass-#{$color} {
+    --#{$prefix}-bg-opacity: 0.8;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: rgba($value, var(--#{$prefix}-bg-opacity));
+  }
+}

@@ -1,0 +1,60 @@
+#dunamix-landing {
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+
+	.frosted {
+		position: relative;
+		z-index: 2;
+		backdrop-filter: blur(4px);
+		color: #fff;
+		font-size: 30px;
+		padding: 50px;
+		border-radius: 10px;
+		box-shadow: 0 5px 50px rgba(0,0,0,0.5);
+
+		div {
+			font-size: 15px;
+		}
+
+
+		a {
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+			right: 0;
+			text-align: center;
+			color: #fff;
+			font-size: 15px;
+		}
+	}
+
+	.content {
+		position: relative;
+		padding: 20% 0 0;
+	}
+
+	.layer {
+		height: 100%;
+		background-attachment: fixed;
+		background: rgba(7, 2, 4, 0.77);
+	}
+
+	p.lead {
+		color: #fff;
+	}
+
+	.white-bg {
+		background: #ffffff;
+		padding: 120px 0;
+		display: block;
+	}
+}

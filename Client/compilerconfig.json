@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/Themes/Dunamix.Material2SicElf/css/Theme.css",
+    "inputFile": "src/styles/Theme.scss"
+  },
+  {
+    "outputFile": "src/styles/_page-customizations.css",
+    "inputFile": "src/styles/_page-customizations.scss"
+  }
+]

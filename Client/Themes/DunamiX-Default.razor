@@ -1,0 +1,185 @@
+@namespace Dunamix.Material2SicElf
+@using Dunamix.Material2SicElf.Controls
+@using Oqtane.Themes
+@inherits ThemeBase
+@inject ISettingService SettingService
+
+@if (_isHome)
+{
+    <header id="@(_themePrefix)header"
+        class="page-header text-center position-relative banner-section"  
+        style="background-image:url('@(_backgroundUrl)');background-position: center center; background-size: Cover;background-attachment: fixed;background-repeat: no-repeat;">
+        <NavBar />
+        <div class="container">
+            <Pane Name="Landing" />
+            <div class="row justify-content-center">
+                <a href="#@(_themePrefix)page-start" class="py-5 mx-auto bottom-0" title="Scroll Down">
+                    <div class="mouse_scroll">
+                        <div class="mouse">
+                            <div class="wheel"></div>
+                        </div>
+                        <div>
+                            <span class="m_scroll_arrows unu"></span>
+                            <span class="m_scroll_arrows doi"></span>
+                            <span class="m_scroll_arrows trei"></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id="@(_themePrefix)page-start"></div>
+        <div style="height:250px">&nbsp;</div>
+    </header>
+}
+else
+{
+    <Header BackgroundImage="@(_backgroundUrl)" />
+}
+<main id="main">
+    <div id="@(_themePrefix)page" class="@(_themePrefix)page content shadow-5-strong">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <Pane Name="Left 50%" />
+                </div>
+                <div class="col-md-6">
+                    <Pane Name="Right 50%" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <Pane Name="@PaneNames.Default" />
+                </div>
+            </div>
+        </div>
+        @if (!_isHome)
+        {
+            <Pane Name="Top Full Width" />
+        }
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <Pane Name="Top 100%" />
+                </div>
+            </div>
+         
+            <div class="row">
+                <div class="col-md-4">
+                    <Pane Name="Left 33%" />
+                </div>
+                <div class="col-md-4">
+                    <Pane Name="Center 33%" />
+                </div>
+                <div class="col-md-4">
+                    <Pane Name="Right 33%" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <Pane Name="Left Outer 25%" />
+                </div>
+                <div class="col-md-3">
+                    <Pane Name="Left Inner 25%" />
+                </div>
+                <div class="col-md-3">
+                    <Pane Name="Right Inner 25%" />
+                </div>
+                <div class="col-md-3">
+                    <Pane Name="Right Outer 25%" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <Pane Name="Left 25%" />
+                </div>
+                <div class="col-md-6">
+                    <Pane Name="Center 50%" />
+                </div>
+                <div class="col-md-3">
+                    <Pane Name="Right 25%" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <Pane Name="Left Sidebar 66%" />
+                </div>
+                <div class="col-md-4">
+                    <Pane Name="Right Sidebar 33%" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <Pane Name="Left Sidebar 33%" />
+                </div>
+                <div class="col-md-8">
+                    <Pane Name="Right Sidebar 66%" />
+                </div>
+            </div>
+        </div>
+        <Pane Name="After Full Width" />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <Pane Name="Bottom 100%" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <ToTop/>
+    <footer id="@(_themePrefix)footer" class="@(_themePrefix)footer text-white position-relative">
+        <div class="@(_themePrefix)footer-top py-3 container">
+            <Pane Name="Bottom Full Width" />
+        </div>
+        @if (_footer)
+        {
+            <div class="bg-black footer align-items-center">
+                <Footer />
+            </div>
+        }
+        
+    </footer>
+</main>
+
+@code {
+    public override string Name => "Dunamix Default Theme";
+
+    public override string Panes => PaneNames.Default + ",Landing,Top Full Width,After Full Width,Top 100%,Left 50%,Right 50%,Left 33%,Center 33%,Right 33%,Left Outer 25%,Left Inner 25%,Right Inner 25%,Right Outer 25%,Left 25%,Center 50%,Right 25%,Left Sidebar 66%,Right Sidebar 33%,Left Sidebar 33%,Right Sidebar 66%,Bottom 100%,Bottom Full Width,Footer";
+    public override List<Resource> Resources => new List<Resource>()
+    {
+        new Resource { ResourceType = ResourceType.Stylesheet, Url = "https://fonts.googleapis.com/css?family=Ubuntu" },
+        new Resource { ResourceType = ResourceType.Stylesheet, Url ="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" },
+        new Resource { ResourceType = ResourceType.Stylesheet, Url = ThemePath() + "css/Theme.css" },
+        new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "/js/site.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = "https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" },
+        new Resource { ResourceType = ResourceType.Script, Bundle = "Bootstrap", Url = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/js/bootstrap.bundle.min.js", Integrity = "sha512-9GacT4119eY3AcosfWtHMsT5JyZudrexyEVzTBWV3viP/YfB9e2pEy3N7WXL3SV6ASXpTU0vzzSxsbfsuUH4sQ==", CrossOrigin = "anonymous" },
+    };
+
+    private bool _login = true;
+    private bool _register = true;
+    private bool _footer = false;
+    private bool _isHome = true;
+    private string _themePrefix = "dunamix-";
+    
+    private string _backgroundUrl = "";
+
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            var settings = SettingService.MergeSettings(PageState.Site.Settings, PageState.Page.Settings);
+            _login = bool.Parse(SettingService.GetSetting(settings, GetType().Namespace + ":Login", "true"));
+            _register = bool.Parse(SettingService.GetSetting(settings, GetType().Namespace + ":Register", "true"));
+            _footer = bool.Parse(SettingService.GetSetting(settings, GetType().Namespace + ":Footer", "true"));
+            _backgroundUrl = SettingService.GetSetting(settings, GetType().Namespace + ":Background-Url", string.Format("{0}img/{1}bck.jpg",ThemePath() ,_themePrefix));
+            @if (PageState.Page.Name != "Home")
+            {
+                _isHome = false;
+            }
+        }
+        catch
+        {
+            // error loading theme settings
+        }
+    }
+
+}

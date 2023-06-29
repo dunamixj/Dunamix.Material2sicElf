@@ -1,0 +1,47 @@
+@namespace Dunamix.Material2SicElf
+@inherits ContainerBase
+@inject ISettingService SettingService
+
+
+    <div class="dunamix-background text-white frosted-glass py-5 @(_classes)">
+        @if (_title && ModuleState.Title != "-")
+        {
+           <div class="row px-4">
+                <div class="d-flex flex-nowrap">
+                    <span style="color:red"><ModuleActions /></span><h2><ModuleTitle /></h2>
+                </div>
+                <hr class="app-rule" />
+            </div>
+        }
+        else
+        {
+            <span style="color:red"><ModuleActions /></span>
+        }
+
+        <div class="row">
+            <ModuleInstance />
+        </div>
+    </div>
+
+@code {
+    public override string Name => "Customizable Background FrostedContainer";
+    private string _themePrefix = "dunamix-";
+    private bool _title = true;
+    private string _classes = "container-fluid";
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            _title = bool.Parse(SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Title", "true"));
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Background", "");
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Text", "");
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Border", "");
+            _classes = _classes.Trim();
+        }
+        catch(Exception ex)
+        {
+            throw ex;
+            // error loading container settings
+        }
+    }
+}

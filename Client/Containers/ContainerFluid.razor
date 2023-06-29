@@ -1,0 +1,49 @@
+@namespace Dunamix.Material2SicElf
+@inherits ContainerBase
+@inject ISettingService SettingService
+
+<div class="container-fluid py-3 @(_classes)">
+    @if (_title && ModuleState.Title != "-")
+    {
+        <div class="row px-4">
+            <span style="color:red"><ModuleActions /></span>
+            <div class="d-flex flex-nowrap justify-content-center">
+                <h2><ModuleTitle /></h2>
+            </div>
+            <hr class="app-rule" />
+        </div>
+    }
+    else
+    {
+        <span style="color:red"><ModuleActions /></span>
+    }
+
+    <div class="row justify-content-center pb-3 px-0">
+        <ModuleInstance />
+    </div>
+</div>
+
+
+@code {
+    public override string Name => "Customizable Full Width Container";
+    private static string _themePrefix = "dunamix-";
+    private bool _title = true;
+    private string _classes = string.Format("{0}fluid-container", _themePrefix);
+    private string _debugClasses = "";
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            _title = bool.Parse(SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Title", "true"));
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Background", "");
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Text", "light");
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Border", "");
+            _classes = _classes.Trim();
+        }
+        catch(Exception ex)
+        {
+            throw ex;
+            // error loading container settings
+        }
+    }
+}

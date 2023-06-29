@@ -1,0 +1,35 @@
+@namespace Dunamix.Material2SicElf.Controls
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.Extensions.Localization;
+@using Oqtane.Themes.Controls
+@using Oqtane;
+@inherits LoginBase
+@inject IStringLocalizer<Login> Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+
+<span class="app-login">
+    <AuthorizeView Roles="@RoleNames.Registered">
+        <Authorizing>
+            <text>...</text>
+        </Authorizing>
+        <Authorized>
+            <a title="Logout" @onclick="LogoutUser">
+                <i class="las la-2x la-sign-out-alt"></i>
+            </a>
+        </Authorized>
+        <NotAuthorized>
+            @if (ShowLogin)
+            {
+                <a title="Login" @onclick="LoginUser">
+                    <i class="las la-2x la-sign-in-alt"></i>
+                </a>
+            }
+        </NotAuthorized>
+    </AuthorizeView>
+</span>
+
+@code
+{
+    [Parameter]
+    public bool ShowLogin { get; set; } = true;
+}

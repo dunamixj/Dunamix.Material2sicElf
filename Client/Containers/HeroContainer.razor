@@ -1,0 +1,48 @@
+@namespace Dunamix.Material2SicElf
+@inherits ContainerBase
+@inject ISettingService SettingService
+
+
+    <div class="dunamix-background text-white py-5 h-100 shadow-3-strong" style="background-image:url('/Themes/Dunamix.Material2SicElf/img/@(_themePrefix)bck.jpg');height:100vh">
+        @if (_title && ModuleState.Title != "-")
+        {
+            <div class="row px-4 ">
+                <span style="color:red"><ModuleActions /></span>
+                <div class="d-flex flex-nowrap justify-content-center">
+                    <h2><ModuleTitle /></h2>
+                </div>
+                <hr class="app-rule" />
+            </div>
+        }
+        else
+        {
+        <span style="color:red"><ModuleActions /></span>
+        }
+
+        <div class="@(_classes)">
+            <ModuleInstance />
+        </div>
+    </div>
+
+@code {
+    public override string Name => "Customizable FullPage Hero Container";
+    private string _themePrefix = "dunamix-";
+    private bool _title = true;
+    private string _classes = "h-50";
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            _title = bool.Parse(SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Title", "true"));
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Background", "");
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Text", "");
+            _classes += " " + SettingService.GetSetting(ModuleState.Settings, GetType().Namespace + ":Border", "");
+            _classes = _classes.Trim();
+        }
+        catch(Exception ex)
+        {
+            throw ex;
+            // error loading container settings
+        }
+    }
+}

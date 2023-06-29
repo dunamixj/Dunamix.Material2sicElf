@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Dunamix.Material.2SicElf.Client": {
+      "commandName": "Project",
+      "nativeDebugging": true,
+      "hotReloadEnabled": false
+    }
+  }
+}

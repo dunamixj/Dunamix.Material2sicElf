@@ -1,0 +1,22 @@
+﻿@namespace Dunamix.Material2SicElf.Controls
+@using Oqtane.Themes
+@inherits ThemeControlBase
+@inject ISettingService SettingService    
+
+<header id="@(_themePrefix)header" style="background-image:url('@(BackgroundImage)'); background-position: center center; background-size: Cover;background-attachment: fixed;background-repeat: no-repeat;">
+    <NavBar/>
+    <div class="banner parallax scroll" id="parallax">
+        <div class="container glass">
+            <div class="row">
+                <div class="col-12"><h1 class="text-white">@PageState.Page.Title</h1></div>
+            </div>
+        </div>    
+    </div>
+</header>
+@code {
+    private string _themePrefix = "dunamix-";
+
+    [Parameter]
+    public string BackgroundImage { get; set; }
+
+}
